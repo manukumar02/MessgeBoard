@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Showing Ajax Load Request Status in jQuery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                // $("#box").load("../ajax-jquery-tutorial-master/views/test-content.html", function(responseTxt, statusTxt, jqXHR){
+                //     if(statusTxt == "success"){
+                //         alert("New content loaded successfully!");
+                //     }
+                //     if(statusTxt == "error"){
+                //         alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
+                //     }
+                // });
+
+                $(function () {
+                    $.ajax({
+                        type: 'GET',
+                        // headers: { "X-My-Custom-Header": "some value", 'Access-Control-Allow-Origin': '*' },
+                        url: '../ajax-jquery-tutorial-master/views/test-content.html', // js is lowercase!                        
+                        success: function (data) {
+                            console.log('success', data);
+                            $("#box").append(data);
+                        }
+                    });
+
+                    $(document).on('click', "#buttonone", function () {
+                        alert('Button One');
+                    });
+                    $("#buttontwo").click(function () {
+                        alert('Button Two');
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <h2>Click button to load new content inside DIV box</h2>
+    </div>
+    <button type="button">Load Content</button>
+</body>
+
+</html>
+
+<!-- <html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#button").click(function () {
+                $("#frame").attr("src", "../ajax-jquery-tutorial-master/views/test-content.html");
+            });
+            $("#button2").click(function () {
+                $("#frame").attr("src", "../ajax-jquery-tutorial-master/views/test-content-2.html");
+            });
+
+            $("#buttonone").click(function () {
+                alert('Button One');
+            });
+            $("#buttontwo").click(function () {
+                alert('Button Two');
+            });
+
+            var iframe = $('#frame').contents();
+            $iframe = $( document.getElementById("frame").contentWindow.document );
+
+            $iframe.find("body").click(function(){
+                alert("hey");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="mydiv" style="width: 100%; height: 100%;">
+        <iframe id="frame" src=""></iframe>
+    </div>
+    <button id="button">Web Page 1</button>
+    <button id="button2">Web Page 2</button>
+</body>
+
+</html> -->
