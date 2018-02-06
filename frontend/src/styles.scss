@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/_theming.scss';
+
+@include mat-core();
+
+$primary: mat-palette($mat-blue);
+$podshark-light-primary: mat-palette($mat-grey, A100,A100,A100); //white
+$accent:  mat-palette($mat-teal, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
 
 h1 {
     color: #369;
@@ -16,4 +28,18 @@ body {
 
 .card {
     margin: 8px;
+    background-color: mat-color($primary, A100,200);
+    // background-color: mat-color($podshark-light-primary);
+    .mat-form-field-placeholder-wrapper {
+      color: mat-color($podshark-light-primary);
+    }
+    .mat-card-actions {
+      button {
+        background-color: mat-color($primary, A100,200);
+        color: mat-color($accent, 300);
+      }
+    }
+}
+h1 {
+  color: mat-color($accent, 300);
 }
