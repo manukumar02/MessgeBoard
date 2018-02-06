@@ -43,3 +43,12 @@ body {
 h1 {
   color: mat-color($accent, 300);
 }
+mat-form-field {
+  .mat-form-field-underline {
+
+    background-color: mat-color($primary, 200); // -> THIS IS RIGHT :)
+  }
+  .mat-form-field-placeholder {
+    color: mat-color($primary, 200);
+  }
+}
